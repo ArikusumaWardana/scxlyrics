@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-main-color : linear-gradient(to left bottom, #00e0ff, #00c6ff, #00a7ff, #0084ff, #1755ff);
+    --bg-color: #fff;
+    --main-color: #1755FF;
+    --text-color: #020307;
+    --scroll-color: #00c8e2;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-color) !important;
+    transition: 0.3s all linear;
+    -webkit-transition: 0.3s all linear;
+    -moz-transition: 0.3s all linear;
+    -ms-transition: 0.3s all linear;
+    -o-transition: 0.3s all linear;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(1, 1, 189) !important;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;   
+    background-image: var(--bg-main-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-color) !important; 
+}
+
+.body-login {
+    max-width: 600px;
+    background-color: rgba(255, 255, 255);
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.body-login .title-login h1,
+.body-login .title-login .bx {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--main-color);
+}
+
+.email-field,
+.password-field,
+.name-field,
+.username-field {
+    padding: 10px 0;
+}
+
+.email-field input, 
+.password-field input,
+.name-field input,
+.username-field input {
+    width: 380px;
+    padding: 10px 15px;
+    background: transparent;
+    color: var(--text-color);
+    outline: none;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.email-field input::placeholder, 
+.password-field input::placeholder,
+.name-field input::placeholder,
+.username-field input::placeholder {
+    color: var(--text-color);
+}
+
+.password-field .forgot-password-link,
+.password-field .info-password {
+    text-align: right !important;
+    padding: 0 60px;
+}
+
+.password-field .forgot-password-link span,
+.password-field .info-password span {
+    font-size: 14px;
+}
+
+.button-field {
+    padding: 20px;
+}
+
+.button-field button {
+    padding: 10px 35px;
+    font-weight: bold;
+    color: var(--bg-color);
+    background-color: var(--main-color);
+    border: none;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.button-field button:hover {
+    color: var(--main-color);
+    background-color: var(--bg-color); 
+}
+
