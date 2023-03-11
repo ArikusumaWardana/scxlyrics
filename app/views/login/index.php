@@ -5,6 +5,7 @@
             <div class="title-login">
                 <h1><i class='bx bxl-xing bx-flip-vertical me-2' ></i>Sign In</h1>
             </div>
+            <?php Flasher::flash() ?>
             <div class="email-field">
                 <input type="email" name="email" placeholder="Your email...">
             </div>
@@ -19,7 +20,7 @@
                 <button type="submit">Sign In</button>
             </div>
             <div class="text-register">
-                <span>Don't have account? <a href="<?= baseUrl ?>auth/register/">Register!</a></span>
+                <span>Don't have account? <a href="<?= url('auth/register/') ?>">Register!</a></span>
             </div>
         </form>
     </main>

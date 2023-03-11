@@ -23,11 +23,24 @@
 
         // Fungsi untuk melakukan registrasi user berdasarkan data" yang diinputkan
         public function registerProcess() {
-            if($this->model('UserModel')->register($_POST) > 0) {
-                header('Location: ' . baseUrl . 'auth/login/');
+
+            $post = $_POST['name'] && $_POST['username'] && $_POST['email_user'] && $_POST['password'];
+
+            if(!empty($post)) {
+
+                if($this->model('UserModel')->register($_POST) > 0) {
+                    Flasher::setFlash('Berhasil Register! login sekarang!', 'success');
+                    return redirect('auth/login/');
+                } else {
+                    Flasher::setFlash('Masukan data dengan benar!', 'danger');
+                    return back();
+                }
+
             } else {
-                die('gagal');
+                Flasher::setFlash('Masukan data terlebih dahulu!', 'danger');
+                return back();
             }
+            
         }
 
         // Fungsi untuk masuk ke halaman login
@@ -47,30 +60,37 @@
             $user   = $this->model('UserModel')->getUserByEmail($_POST['email']);
             $admin  = $this->model('AdminModel')->getAdminByEmail($_POST['email']);
 
+            if(!empty($_POST['email'] && $_POST['password'])) {
 
-            if($user) {
-                if(password_verify($_POST['password'], $user['password'])) {
-                    $this->userSession($user);
-                    redirect('/');
-                    return $user;
+                if($user) {
+                    if(password_verify($_POST['password'], $user['password'])) {
+                        $this->userSession($user);
+                        redirect('/');
+                        return $user;
+                    } else {
+                        Flasher::setFlash('Email atau password salah!', 'danger');
+                        return back();
+                    }
+                } elseif($admin) {
+                    if(password_verify($_POST['password'], $admin['password'])) {
+                        $this->adminSession($admin);
+                        redirect('/dashboard');
+                        return $admin;
+                    } else {
+                        Flasher::setFlash('Email atau password salah!', 'danger');
+                        return back();
+                    }
                 } else {
-                    echo "Email atau password salah!";
-                    die;
+                    Flasher::setFlash('Akun belum terdaftar!', 'danger');
+                    return back();
                 }
-            } elseif($admin) {
-                if(password_verify($_POST['password'], $admin['password'])) {
-                    $this->adminSession($admin);
-                    redirect('/dashboard');
-                    return $admin;
-                } else {
-                    echo "Email atau password salah!";
-                    die;
-                }
+
             } else {
-                echo "Login gagal";
-                die;
+                Flasher::setFlash('Masukan email dan password terlebih dahulu!', 'danger');
+                return back();
             }
 
+            
         }
 
         // Mengelompokan sesi dari user

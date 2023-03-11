@@ -138,5 +138,6 @@ body {
 .button-field button:hover {
     color: var(--main-color);
     background-color: var(--bg-color); 
+    outline: 1px solid var(--main-color);
 }
 

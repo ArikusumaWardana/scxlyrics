@@ -1,4 +1,4 @@
-<script src="<?= baseUrl ?>assets/js/bootstrap.bundle.min.js"></script>
+<script src="<?= asset('js/bootstrap.min.js') ?>"></script>
 
 
 </body>
