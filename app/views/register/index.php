@@ -1,5 +1,5 @@
 
-    <main class="body-login w-100 m-auto">
+    <main class="body-login w-100 m-auto shadow-lg">
         <form action="<?= url('auth/registerProcess/') ?>" method="POST">
             <div class="title-login">
                 <h1><i class='bx bxl-xing bx-flip-vertical me-2' ></i>Sign Up</h1>

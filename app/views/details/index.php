@@ -13,7 +13,7 @@
     
 <section class="container body-detail">
     <div class="row justify-content-between">
-        <div class="col-8 left-detail">
+        <div class="col-8 left-detail shadow-lg">
             <div class="body-left">
                 <div class="d-flex justify-content-between">
                     <div class="artist">
@@ -99,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 right-detail">
+        <div class="col-3 right-detail shadow-lg">
             <div class="body-right">
                 <div class="popular">
                     <p class="">Popular Song</p>

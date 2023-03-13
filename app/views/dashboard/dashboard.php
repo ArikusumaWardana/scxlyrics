@@ -73,11 +73,11 @@
 
 <div class="mt-5">
 
-    <div class="data-header bg-light border-bottom mb-2 py-3 px-4 d-flex justify-content-between align-items-center">
+    <div class="shadow data-header bg-light border-bottom mb-2 py-3 px-4 d-flex justify-content-between align-items-center">
         <div class="head-title">History</div>
     </div>
 
-    <table class="table table-striped table-light" id="dataTable">
+    <table class="shadow-lg table table-striped table-light" id="dataTable">
     <thead>
         <tr class="text-center">
         <th class="py-3 text-center" scope="col">No</th>

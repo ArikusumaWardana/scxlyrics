@@ -1,11 +1,11 @@
 <div class="">
 
-    <div class="data-header bg-light mb-4 py-3 px-4 d-flex justify-content-between align-items-center">
+    <div class="shadow data-header bg-light mb-4 py-3 px-4 d-flex justify-content-between align-items-center">
         <div class="head-title"><?= $data['page-title']; ?></div>
         <div class="head-link-add"><a href="<?= url('admin/add/') ?>" class="btn btn-primary"><i class='bx bxs-user-plus'></i></a></div>
     </div>
 
-    <table class="table table-striped table-light" id="dataTable">
+    <table class="shadow-lg table table-striped table-light" id="dataTable">
     <thead>
         <tr class="text-center">
         <th class="py-3 text-center" scope="col">No</th>
