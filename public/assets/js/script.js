@@ -8,8 +8,3 @@ title.addEventListener("keyup", function() {
         slug.value = preslug.toLowerCase()
 });
 
-// Datatables
-$(document).ready( function () {
-    $('#dataTable').DataTable();
-} );
-
