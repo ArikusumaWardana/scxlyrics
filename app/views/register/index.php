@@ -6,13 +6,13 @@
             </div>
             <?php Flasher::flash() ?>
             <div class="name-field">
-                <input type="text" name="name" placeholder="masukan name..." minlength="50">
+                <input type="text" name="name" placeholder="masukan name..." maxlength="50">
             </div>
             <div class="username-field">
-                <input type="text" name="username" placeholder="masukan username..." minlength="50">
+                <input type="text" name="username" placeholder="masukan username..." maxlength="50">
             </div>
             <div class="email-field">
-                <input type="email" name="email_user" placeholder="masukan email..." minlength="50">
+                <input type="email" name="email_user" placeholder="masukan email..." maxlength="50">
             </div>
             <div class="password-field">
                 <input type="password" name="password" placeholder="masukan password..." minlength="8" maxlength="15">
