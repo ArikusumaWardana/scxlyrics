@@ -5,6 +5,8 @@
         <div class="head-link-add"><a href="<?= url('admin/add/') ?>" class="btn btn-primary"><i class='bx bxs-user-plus'></i></a></div>
     </div>
 
+    <div class="my-2"><?php Flasher::flash(); ?></div>
+
     <table class="table table-striped table-light" id="dataTable">
     <thead>
         <tr class="text-center">

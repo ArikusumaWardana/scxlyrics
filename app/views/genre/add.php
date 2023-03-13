@@ -7,7 +7,8 @@
     </div>
 
     <div class="add-body bg-light p-5">
-        <form action="<?= url('genre/tambahGenre/') ?>" method="post" >
+        <form action="<?= url('genre/store/') ?>" method="post" >
+            <div class=""><?php Flasher::flash() ?></div>
             <div class="d-flex justify-content-center row">
                 <div class="mb-3 col-6">
                     <label for="exampleFormControlInput1" class="form-label">Nama Genre</label>

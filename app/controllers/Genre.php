@@ -22,12 +22,25 @@
 
         }
 
-        public function tambahGenre() {
+        public function store() {
 
-            if($this->model('GenreModel')->addGenre($_POST) > 0 ) {
-                redirect('genre');
+            $genrepost = $_POST['genre_name'] && $_POST['genre_slug'] && $_POST['genre_desc'];
+
+            if(!empty($genrepost)) {
+
+                if($this->model('GenreModel')->addGenre($_POST) > 0 ) {
+                    Flasher::setFlash('Data genre berhasil ditambahkan!', 'success');
+                    return redirect('genre');
+                } else {
+                    Flasher::setFlash('Data genre gagal ditambahkan!', 'danger');
+                    return back();
+                }
+
             } else {
-                back();
+
+                Flasher::setFlash('Isikan data terlebih dahulu!', 'warning');
+                return back();
+
             }
 
         }
