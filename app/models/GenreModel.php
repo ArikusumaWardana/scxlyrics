@@ -13,6 +13,11 @@
 
         public function getAllGenre() {
             
+            $query = "SELECT * FROM {$this->tb} ORDER BY id_genre DESC";
+
+            $this->db->query($query);
+            return $this->db->allResult();
+
         }
 
         public function addGenre() {
