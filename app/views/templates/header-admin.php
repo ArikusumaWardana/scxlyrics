@@ -15,6 +15,10 @@
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+
+        <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
 </head>
 <body>
     
@@ -39,7 +43,7 @@
                 </a>
             </li>    
             <li class="nav-item my-1">
-                <a class="nav-link d-flex align-items-center" aria-current="page" href="#">
+                <a href="<?= url('lyrics/') ?>" class="nav-link d-flex align-items-center <?php if($data['page-title'] == 'Lyrics Data') : ?> side-active <?php endif; ?>" aria-current="page">
                     <div class="me-1"><i class='bx bxs-notepad'></i> </div>
                     <div class="ms-1"><span>Data Lyrics</span></div>
                 </a>
@@ -51,7 +55,7 @@
                 </a>
             </li>
             <li class="nav-item my-1">
-                <a class="nav-link d-flex align-items-center" aria-current="page" href="#">
+                <a href="<?= url('artist/') ?>" class="nav-link d-flex align-items-center" aria-current="page">
                     <div class="me-1"><i class='bx bxs-user-detail'></i> </div>
                     <div class="ms-1"><span>Data Artist</span></div>
                 </a>

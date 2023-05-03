@@ -19,9 +19,11 @@
                     <input type="text" name="genre_slug" id="slug" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Slug Genre...">
                 </div>
             </div>
-            <div class="form-floating mb-3">
-                <textarea class="form-control" name="genre_desc" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"></textarea>
-                <label for="floatingTextarea">Genre Description</label>
+            <div class="form-floating mb-3 mt-4">
+                <!-- <textarea class="form-control" name="genre_desc" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"></textarea> -->
+                <!-- <label>Genre Description</label>  -->
+                <input id="trix" type="hidden" name="genre_desc" placeholder="Genre Description">
+                <trix-editor input="trix"></trix-editor>
             </div>
             <div class="mt-3 text-end">
                 <button class="btn btn-primary" type="submit"><i class='bx bxs-folder-plus'></i> Tambah Genre</button>
