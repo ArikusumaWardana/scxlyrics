@@ -41,7 +41,7 @@
                     <div class="col mr-2">
                         <div class="fs-6 fw-bold text-primary text-uppercase mb-1">
                         Artist Data</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($data['user']) ?> Data</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($data['artist']) ?> Artist</div>
                     </div>
                     <div class="col-auto">
                         <i class='bx bxs-user-badge text-gray-300 fs-1 mt-2'  style='color:#777777'></i>
@@ -58,7 +58,7 @@
                     <div class="col mr-2">
                         <div class="fs-6 fw-bold text-primary text-uppercase mb-1">
                             Lyrics Data</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($data['user']) ?> User</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($data['lyrics']) ?> Lyrics</div>
                     </div>
                     <div class="col-auto">
                         <i class='bx bxs-add-to-queue text-gray-300 fs-1 mt-2' style='color:#777777'></i>
@@ -81,21 +81,20 @@
     <thead>
         <tr class="text-center">
         <th class="py-3 text-center" scope="col">No</th>
-        <th class="py-3 text-center" scope="col">Nama</th>
-        <th class="py-3 text-center" scope="col">Description</th>
-        <th class="py-3 text-center" scope="col">Action</th>
+        <th class="py-3 text-center" scope="col">Judul Lyrics</th>
+        <th class="py-3 text-center" scope="col">Artist</th>
+        <th class="py-3 text-center" scope="col">Upload Date</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="text-center">
-            <th scope="col">1</th>
-            <td>Action</td>
-            <td>Lorem, ipsum dolor sit am</td>
-            <td>
-                <a href="" class="btn btn-warning text-white"><i class='bx bx-edit'></i></a>
-                <a href="" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#deleteAdminModal"><i class='bx bxs-trash-alt'></i></a>
-            </td>
-        </tr>
+        <?php foreach($data['history'] as $key => $history) : ?>
+            <tr class="text-center">
+                <th scope="col"><?= $key+1 ?></th>
+                <td><?= $history['title_lyrics'] ?></td>
+                <td><?= $history['nama_genre'] ?></td>
+                <td><?= date('d F Y', strtotime($history['date_upload'])) ?></td>
+            </tr>
+        <?php endforeach; ?>
     </tbody>
     </table>
 

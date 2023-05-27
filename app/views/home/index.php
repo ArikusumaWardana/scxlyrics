@@ -4,8 +4,8 @@
         <h1 class="fw-bold text-uppercase"><a href="">Scxlyrics</a></h1>
         <p>Lyrics and translation of Anime OST, Pop, Electronic House, Jpop, Vocaloid and more.</p>
     </div>
-    <form class="d-flex justify-content-center form-search align-items-center mt-4">
-        <input class="bg-transparent me-2 search-input" type="text" placeholder="Search any lyrics..." aria-label="Search">
+    <form action="<?= baseUrl ?>home/search" method="POST" class="d-flex justify-content-center form-search align-items-center mt-4">
+        <input class="bg-transparent me-2 search-input" name="keyword" id="keyword" type="text" placeholder="Search any lyrics..." aria-label="Search">
         <button class=" btn-search rounded-circle" type="submit"><i class='bx bx-search'></i></button>
     </form>
 
@@ -15,21 +15,23 @@
 <section class="container section-card">
     <div class="d-flex justify-content-center row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
         
-        <div class="card-body my-2">
-            <a href="" class="genre-card-link">
-                <span class="genre-card">Anime</span>
-            </a>
-            <a href="<?= baseUrl ?>details/" class="text-cover-link">
-                <img class="img-card" src="<?= baseUrl ?>assets/image/cover/cover1.jpg" alt="">
-                <div class="text-cover">
-                    <span class="">[Lirik+Terjemahan] RADWIMPS - KANATA HALUKA</span>
-                    <br>
-                    <span class="lyrics-date">30 October 2022</span>
-                </div>
-            </a>
-        </div>
+        <?php foreach($data['lyrics'] as $lyrics) : ?>
+            <div class="card-body my-2">
+                <a href="" class="genre-card-link">
+                    <span class="genre-card"><?= $lyrics['nama_genre'] ?></span>
+                </a>
+                <a href="<?= url('details/'. $lyrics['slug_lyrics']) ?>" class="text-cover-link">
+                    <img class="img-card" src="<?= baseUrl ?>assets/upload/<?= $lyrics['image_cover'] ?>" alt="">
+                    <div class="text-cover">
+                        <span class="">[Lirik+Terjemahan] <?= $lyrics['title_lyrics'] ?></span>
+                        <br>
+                        <span class="lyrics-date"><?= date("d F Y", strtotime($lyrics['date_upload'])) ?></span>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
 
-        <div class="card-body my-2">
+        <!-- <div class="card-body my-2">
             <a href="" class="genre-card-link">
                 <span class="genre-card">JPop</span>
             </a>
@@ -98,7 +100,7 @@
                 </div>
             </a>
         </div>
-        
+         -->
         
     </div>
 </section>

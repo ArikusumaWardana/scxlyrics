@@ -12,7 +12,9 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><a class="dropdown-item" href="<?= url('dashboard/') ?>">Dashboard</a></li>
+                  <?php if(!empty($_SESSION['admin']['level'])) : ?>
+                    <li><a class="dropdown-item" href="<?= url('dashboard/') ?>">Dashboard</a></li>
+                  <?php endif; ?>
                   <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal" href="#">Log Out</a></li>
                 </ul>
               </li>

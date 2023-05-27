@@ -7,20 +7,20 @@
     </div>
 
     <div class="add-body bg-light p-5">
-        <form action="<?= url('artist/store/') ?>" method="post" >
+        <form action="<?= url('artist/update/'. $data['get-artist']['id_artist']) ?>" method="post" >
             <div class=""><?php Flasher::flash() ?></div>
             <div class="d-flex justify-content-center row">
                 <div class="mb-3 col-6">
                     <label for="exampleFormControlInput1" class="form-label">Nama Artist</label>
-                    <input type="text" name="artist_name" id="name" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Artist...">
+                    <input type="text" name="artist_name" id="name" value="<?= $data['get-artist']['nama_artist'] ?>" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Artist...">
                 </div>
                 <div class="mb-3 col-6">
                     <label for="exampleFormControlInput1" class="form-label">Slug Artist</label>
-                    <input type="text" name="artist_slug" id="slug" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Slug Artist...">
+                    <input type="text" name="artist_slug" id="slug" value="<?= $data['get-artist']['slug_artist'] ?>" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Slug Artist...">
                 </div>
             </div>
             <div class="mt-3 text-end">
-                <button class="btn btn-primary" type="submit"><i class='bx bx-user-plus'></i> Tambah Artist</button>
+                <button class="btn btn-primary" type="submit"><i class='bx bxs-folder-plus'></i> Update Artist</button>
             </div>
         </form>
     </div>

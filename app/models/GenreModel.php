@@ -20,6 +20,15 @@
 
         }
 
+        public function getGenre() {
+
+            $query = "SELECT * FROM {$this->tb} ORDER BY nama_genre ASC";
+            
+            $this->db->query($query);
+            return $this->db->allResult();
+
+        }
+
         public function getGenreById($id) {
 
             $query = "SELECT * FROM {$this->tb} WHERE id_genre = :id";

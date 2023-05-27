@@ -16,7 +16,48 @@
         </tr>
     </thead>
     <tbody>
-        
+        <?php foreach($data['all-artist'] as $key => $artist) : ?>
+
+        <tr class="text-center">
+            <th scope="col"><?= $key+1; ?></th>
+            <td><?= $artist['nama_artist']; ?></td>
+            <td>
+                <a href="<?= url('artist/edit/'. $artist['id_artist']) ?>" class="btn btn-warning text-white"><i class='bx bx-edit'></i></a>
+                <a href="" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $artist['id_artist'] ?>"><i class='bx bxs-trash-alt'></i></a>
+            
+                <!-- Modal -->
+                <div class="modal fade" id="deleteModal<?= $artist['id_artist'] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <form action="<?= url('artist/delete/'.$artist['id_artist']) ?>" method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="">
+                                    <table style="border-left: 2px solid red;">
+                                        <tr class="text-start">
+                                            <td>Genre Name</td>
+                                            <td>:</td>
+                                            <td><?= $artist['nama_artist']; ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete Data</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </td>
+        </tr>
+
+        <?php endforeach; ?>
     </tbody>
     </table>
 
