@@ -43,9 +43,9 @@ use function PHPSTORM_META\map;
             $extAllowed = array('png', 'jpg', 'jpeg');
             $image = $_FILES['img_cover']['name'];
             $fileParts = explode('.', $image);
-            $ext = end($fileParts);
+            $ext = strtolower(end($fileParts));
             $file_tmp = $_FILES['img_cover']['tmp_name'];
-
+            $fileName = uniqid('', true).'.'.$ext;
            
 
             if(!empty($lyricsPost)) {
@@ -54,9 +54,9 @@ use function PHPSTORM_META\map;
 
                     if(in_array($ext, $extAllowed) === true) {
 
-                        move_uploaded_file($file_tmp, '../public/assets/upload/'.$image);
+                        move_uploaded_file($file_tmp, '../public/assets/upload/'.$fileName);
 
-                        if($this->model('LyricsModel')->addLyrics($image) > 0 ) {
+                        if($this->model('LyricsModel')->addLyrics($fileName) > 0 ) {
                 
                             Flasher::setFlash('Data lyrics berhasil ditambahkan!', 'success');
                             return redirect('lyrics');

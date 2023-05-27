@@ -91,7 +91,7 @@
 
         }
 
-        public function addLyrics($image) {
+        public function addLyrics($fileName) {
 
             try {
 
@@ -105,7 +105,7 @@
                 $this->db->bind('id_artist', $_POST['artist_lyrics']);
                 $this->db->bind('title_lyrics', $_POST['lyrics_title']);
                 $this->db->bind('slug_lyrics', $_POST['lyrics_slug']);
-                $this->db->bind('image_cover', $image);
+                $this->db->bind('image_cover', $fileName);
                 $this->db->bind('date_upload', $_POST['upload_date']);
                 $this->db->bind('japan_lyrics', $_POST['japan_lyrics']);
                 $this->db->bind('english_lyrics', $_POST['english_lyrics']);
