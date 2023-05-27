@@ -72,7 +72,7 @@
             FROM lyrics
             INNER JOIN genre ON lyrics.id_genre = genre.id_genre
             INNER JOIN artist ON lyrics.id_artist = artist.id_artist
-            WHERE lyrics.title_lyrics LIKE :keyword";
+            WHERE lyrics.title_lyrics LIKE :keyword OR genre.nama_genre LIKE :keyword";
 
             $this->db->query($query);
             $this->db->bind('keyword', "%$search%");
