@@ -91,4 +91,39 @@ use function PHPSTORM_META\map;
 
         }
 
+        public function edit($id) {
+
+            $data = [
+                'page-title' => 'Update Lyrics',
+                'all-genre' => $this->model('GenreModel')->getGenre(),
+                'all-artist' => $this->model('ArtistModel')->getArtist(),
+                'get-lyrics' => $this->model('LyricsModel')->getLyricsById($id)
+            ];
+
+            $this->view('templates/header-admin', $data);
+                $this->view('lyrics/edit', $data);
+            $this->view('templates/footer-admin');
+
+        }
+
+        public function update($id) {
+
+            $lyricsPost = $_POST['lyrics_title'] && $_POST['lyrics_slug'] && 
+                $_POST['genre_lyrics'] && $_POST['artist_lyrics'] && 
+                $_POST['upload_date'] && $_POST['embed_link'];
+
+            $lyricsDuplikat = $this->model('LyricsModel')->getLyricsDuplikat();
+            
+            if(!empty($lyricsPost)) {
+
+                if(!$lyricsDuplikat) {
+
+                    
+
+                }
+
+            }
+
+        }
+
     }
