@@ -21,27 +21,26 @@
 
         public function getAllLyrics() {
 
-            $query = "SELECT lyrics.id_lyrics, lyrics.title_lyrics, lyrics.slug_lyrics, lyrics.date_upload, lyrics.image_cover, lyrics.japan_lyrics, 
-                        lyrics.english_lyrics, lyrics.indo_lyrics, lyrics.link_embed, genre.id_genre, genre.nama_genre, genre.slug_genre, genre.description, artist.id_artist, artist.nama_artist, artist.slug_artist 
-                        FROM lyrics
-                        INNER JOIN genre ON lyrics.id_genre = genre.id_genre
-                        INNER JOIN artist ON lyrics.id_artist = artist.id_artist
-                        ORDER BY lyrics.id_lyrics DESC";
+            $query = "SELECT * FROM allLyrics ORDER BY id_lyrics DESC";
             
             $this->db->query($query);
             return $this->db->allResult();
 
         }
 
+        public function getLyricsById($id) {
+
+            $query = "SELECT * FROM allLyrics WHERE id_lyrics = :id";
+
+            $this->db->query($query);
+            $this->db->bind('id', $id);
+            return $this->db->singleResult();
+
+        }
+
         public function getUploadLyrics() {
 
-            $query = "SELECT lyrics.id_lyrics, lyrics.title_lyrics, lyrics.slug_lyrics, lyrics.date_upload, lyrics.image_cover, lyrics.japan_lyrics, 
-                        lyrics.english_lyrics, lyrics.indo_lyrics, lyrics.link_embed, genre.id_genre, genre.nama_genre, genre.slug_genre, genre.description, artist.id_artist, artist.nama_artist, artist.slug_artist 
-                        FROM lyrics
-                        INNER JOIN genre ON lyrics.id_genre = genre.id_genre
-                        INNER JOIN artist ON lyrics.id_artist = artist.id_artist
-                        ORDER BY lyrics.id_lyrics DESC
-                        LIMIT 10";
+            $query = "SELECT * FROM allLyrics ORDER BY id_lyrics DESC LIMIT 10";
             
             $this->db->query($query);
             return $this->db->allResult();
@@ -50,12 +49,7 @@
 
         public function getLyricsBySlug($slug) {
 
-            $query = "SELECT lyrics.id_lyrics, lyrics.title_lyrics, lyrics.slug_lyrics, lyrics.date_upload, lyrics.image_cover, lyrics.japan_lyrics, 
-            lyrics.english_lyrics, lyrics.indo_lyrics, lyrics.link_embed, genre.id_genre, genre.nama_genre, genre.slug_genre, 			genre.description, artist.id_artist, artist.nama_artist, artist.slug_artist 
-            FROM lyrics
-            INNER JOIN genre ON lyrics.id_genre = genre.id_genre
-            INNER JOIN artist ON lyrics.id_artist = artist.id_artist
-            WHERE lyrics.slug_lyrics = :slug";
+            $query = "SELECT * FROM allLyrics WHERE slug_lyrics = :slug";
 
             $this->db->query($query);
             $this->db->bind('slug', $slug);
@@ -67,12 +61,7 @@
 
             $search = $_POST['keyword'];
 
-            $query = "SELECT lyrics.id_lyrics, lyrics.title_lyrics, lyrics.slug_lyrics, lyrics.date_upload, lyrics.image_cover, lyrics.japan_lyrics, 
-            lyrics.english_lyrics, lyrics.indo_lyrics, lyrics.link_embed, genre.id_genre, genre.nama_genre, genre.slug_genre, genre.description, artist.id_artist, artist.nama_artist, artist.slug_artist 
-            FROM lyrics
-            INNER JOIN genre ON lyrics.id_genre = genre.id_genre
-            INNER JOIN artist ON lyrics.id_artist = artist.id_artist
-            WHERE lyrics.title_lyrics LIKE :keyword OR genre.nama_genre LIKE :keyword";
+            $query = "SELECT * FROM allLyrics WHERE title_lyrics LIKE :keyword OR nama_genre LIKE :keyword";
 
             $this->db->query($query);
             $this->db->bind('keyword', "%$search%");
@@ -123,6 +112,10 @@
 
             }
 
+        }
+
+        public function updateLyrics() {
+            
         }
         
     }
