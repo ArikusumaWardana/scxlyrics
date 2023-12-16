@@ -95,8 +95,10 @@
                     <p class="">Genre List</p>
                     <div class="genre-list-body my-4">
                         <?php ?>
-                            <div class="my-2">
-                                <a href="" class="genre-title">Electronic House</a>
+                            <div class="my-2 d-flex flex-column justify-content-center gap-2">
+                                <?php foreach($data['get-all-genre'] as $genre ) : ?>
+                                    <a href="" class="genre-title"><?= $genre["nama_genre"] ?></a>
+                                <?php endforeach; ?>
                             </div>
                         <?php ?>
                     </div>

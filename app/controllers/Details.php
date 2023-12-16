@@ -6,7 +6,8 @@
             
             $data['title-page'] = 'Details';
             $data['upload'] = $this->model('LyricsModel')->getUploadLyrics();
-            $data ['lyrics-detail'] = $this->model('LyricsModel')->getLyricsBySlug($slug);
+            $data['lyrics-detail'] = $this->model('LyricsModel')->getLyricsBySlug($slug);
+            $data['get-all-genre'] = $this->model('GenreModel')->getAllGenre();
 
             $this->view('templates/header-user', $data);
                 $this->view('parts/navbar');

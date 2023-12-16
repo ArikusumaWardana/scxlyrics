@@ -114,6 +114,13 @@ use function PHPSTORM_META\map;
 
             $lyricsDuplikat = $this->model('LyricsModel')->getLyricsDuplikat();
             
+            $extAllowed = array('png', 'jpg', 'jpeg');
+            $image = $_FILES['img_cover']['name'];
+            $fileParts = explode('.', $image);
+            $ext = strtolower(end($fileParts));
+            $file_tmp = $_FILES['img_cover']['tmp_name'];
+            $fileName = uniqid('', true).'.'.$ext;
+            
             if(!empty($lyricsPost)) {
 
                 if(!$lyricsDuplikat) {
