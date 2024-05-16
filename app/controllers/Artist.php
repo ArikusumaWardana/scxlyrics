@@ -79,7 +79,7 @@
 
         public function update($id) {
 
-            $artistpost = $_POST['artist_name'] && $_POST['artist_slug'];
+            $artistpost = $_POST['artist_name'] && $_POST['artist_slug'] && $_POST['artist_desc'];
             $duplikat = $this->model('ArtistModel')->getArtistDuplikat($_POST);
 
             if(!empty($artistpost)) {

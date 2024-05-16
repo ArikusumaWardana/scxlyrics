@@ -19,6 +19,10 @@
                     <input type="text" name="artist_slug" id="slug" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Slug Artist...">
                 </div>
             </div>
+            <div class="form-floating mb-3 mt-4">
+                <input id="trix" type="hidden" name="artist_desc" placeholder="Artist Description">
+                <trix-editor input="trix"></trix-editor>
+            </div>
             <div class="mt-3 text-end">
                 <button class="btn btn-primary" type="submit"><i class='bx bx-user-plus'></i> Tambah Artist</button>
             </div>
