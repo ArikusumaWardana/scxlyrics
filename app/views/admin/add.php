@@ -12,7 +12,7 @@
 
             <div class="d-flex justify-content-center row">
                 <div class="mb-3 col-6">
-                    <label for="exampleFormControlInput1" class="form-label">Username</label>
+                    <label for="exampleFormControlInput1" class="form-label">Admin Name</label>
                     <input type="text" name="username" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Username...">
                 </div>
                 <div class="mb-3 col-6">
@@ -29,7 +29,7 @@
                     <label for="exampleFormControlInput1" class="form-label">Status Akun</label>
                     <select name="status" class="form-select" aria-label="Default select example">
                         <option value="active">Aktif</option>
-                        <option value="unactive">Tidak Aktif</option>
+                        <option value="inactive">Tidak Aktif</option>
                     </select>
                 </div>
             </div>

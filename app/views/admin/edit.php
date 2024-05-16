@@ -7,16 +7,16 @@
     </div>
 
     <div class="add-body bg-light p-5">
-        <form action="<?= url('admin/update/'. $data['get-admin']['id_admin']) ?>" method="post" >
+        <form action="<?= url('admin/update/'. $data['get-admin']['admin_id']) ?>" method="post" >
         <div class=""><?php Flasher::flash(); ?></div>
             <div class="d-flex justify-content-center row">
                 <div class="mb-3 col-6">
-                    <label for="exampleFormControlInput1" class="form-label">Username</label>
-                    <input value="<?= $data['get-admin']['username'] ?>" type="text" name="username" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Username...">
+                    <label for="exampleFormControlInput1" class="form-label">Admin Name</label>
+                    <input value="<?= $data['get-admin']['admin_name'] ?>" type="text" name="username" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Username...">
                 </div>
                 <div class="mb-3 col-6">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input value="<?= $data['get-admin']['email_admin'] ?>" type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Email Address...">
+                    <input value="<?= $data['get-admin']['admin_email'] ?>" type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Email Address...">
                 </div>
             </div>
             <div class="d-flex justify-content-center row">
@@ -25,7 +25,7 @@
                     <label for="exampleFormControlInput1" class="form-label">Status Akun</label>
                     <select name="status" class="form-select" aria-label="Default select example">
                         <option value="active" <?= $data['get-admin']['status'] == 'active' ? 'selected' : '' ?> >Aktif</option>
-                        <option value="unactive" <?= $data['get-admin']['status'] == 'unactive' ? 'selected' : '' ?> >Tidak Aktif</option>
+                        <option value="inactive" <?= $data['get-admin']['status'] == 'inactive' ? 'selected' : '' ?> >Tidak Aktif</option>
                     </select>
                 </div>
             </div>

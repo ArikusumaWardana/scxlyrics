@@ -11,25 +11,25 @@
 
         // Mengambil data admin berdasarkan email admin
         public function getAdminByEmail($email) {
-            $query = "SELECT * FROM {$this->tbAdmin} WHERE email_admin = :email_admin";
+            $query = "SELECT * FROM {$this->tbAdmin} WHERE admin_email = :admin_email";
 
             $this->db->query($query);
-            $this->db->bind('email_admin', $email);
+            $this->db->bind('admin_email', $email);
             $this->db->execute();
             return $this->db->singleResult();
         }
 
         public function getAdminById($id) {
-            $query = "SELECT * FROM {$this->tbAdmin} WHERE id_admin = $id";
+            $query = "SELECT * FROM {$this->tbAdmin} WHERE admin_id = :admin_id";
 
             $this->db->query($query);
-            $this->db->bind('id_admin', $id);
+            $this->db->bind('admin_id', $id);
             return $this->db->singleResult();
         }
 
         // Mengambil semua data admin yang memiliki level admin saja
         public function getAllAdmin() {
-            $query = "SELECT * FROM {$this->tbAdmin} WHERE level = 'admin' ORDER BY id_admin DESC";
+            $query = "SELECT * FROM {$this->tbAdmin} WHERE level = 'worker' ORDER BY admin_id DESC";
 
             $this->db->query($query);
             $this->db->execute();
@@ -45,13 +45,13 @@
 
                 $passwordHash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-                $query = "INSERT INTO {$this->tbAdmin}(username, email_admin, password, level, status) VALUES (:username, :email_admin, :password, :level, :status)";
+                $query = "INSERT INTO {$this->tbAdmin}(admin_name, admin_email, admin_password, level, status) VALUES (:admin_name, :email_admin, :password, :level, :status)";
 
                 $this->db->query($query);
-                $this->db->bind('username', htmlspecialchars($_POST['username']));
+                $this->db->bind('admin_name', htmlspecialchars($_POST['username']));
                 $this->db->bind('email_admin', htmlspecialchars($_POST['email']));
                 $this->db->bind('password', $passwordHash);
-                $this->db->bind('level', 'admin');
+                $this->db->bind('level', 'worker');
                 $this->db->bind('status', $_POST['status']);
                 $this->db->execute();
                 $this->db->commit();
@@ -73,13 +73,13 @@
 
                 $this->db->beginTransaction();
 
-                $query = "UPDATE {$this->tbAdmin} SET username = :username, email_admin = :email_admin, status = :status WHERE id_admin = $id";
+                $query = "UPDATE {$this->tbAdmin} SET admin_name = :admin_name, admin_email = :admin_email, status = :status WHERE admin_id = :admin_id";
 
                 $this->db->query($query);
-                $this->db->bind('username', htmlspecialchars($_POST['username']));
-                $this->db->bind('email_admin', htmlspecialchars($_POST['email']));
-                // $this->db->bind('password', $passwordHash);
+                $this->db->bind('admin_name', htmlspecialchars($_POST['username']));
+                $this->db->bind('admin_email', htmlspecialchars($_POST['email']));
                 $this->db->bind('status', htmlspecialchars($_POST['status']));
+                $this->db->bind('admin_id', $id);
                 $this->db->execute();
                 $this->db->commit();
 
@@ -101,7 +101,7 @@
                 $this->db->beginTransaction();
 
                     
-                $query = "DELETE FROM {$this->tbAdmin} WHERE id_admin = :id";
+                $query = "DELETE FROM {$this->tbAdmin} WHERE admin_id = :id";
 
                 $this->db->query($query);
                 $this->db->bind('id', $id);
