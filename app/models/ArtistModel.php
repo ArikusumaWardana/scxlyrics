@@ -39,11 +39,12 @@
 
         public function getArtistDuplikat() {
 
-            $query = "SELECT * FROM {$this->tb} WHERE artist_name = :artist_name AND artist_slug = :artist_slug";
+            $query = "SELECT * FROM {$this->tb} WHERE artist_name = :artist_name AND artist_slug = :artist_slug AND artist_desc = :artist_desc";
             
             $this->db->query($query);
-            $this->db->bind('artist_name', $_POST['artist_name']);
-            $this->db->bind('artist_slug', $_POST['artist_slug']);
+            $this->db->bind('artist_name', htmlspecialchars($_POST['artist_name']));
+            $this->db->bind('artist_slug', htmlspecialchars($_POST['artist_slug']));
+            $this->db->bind('artist_desc', $_POST['artist_desc']);
             return $this->db->singleResult();
 
         }
@@ -54,12 +55,13 @@
 
                 $this->db->beginTransaction();
 
-                $query = "INSERT INTO {$this->tb} (nama_artist, slug_artist) 
-                    VALUES (:nama_artist, :slug_artist)";
+                $query = "INSERT INTO {$this->tb} (artist_name, artist_slug, artist_desc) 
+                    VALUES (:nama_artist, :slug_artist, :artist_desc)";
 
                 $this->db->query($query);
                 $this->db->bind('nama_artist', htmlspecialchars($_POST['artist_name']));
                 $this->db->bind('slug_artist', htmlspecialchars($_POST['artist_slug']));
+                $this->db->bind('artist_desc', $_POST['artist_desc']);
                 $this->db->execute();
                 $this->db->commit();
 
@@ -81,10 +83,11 @@
                 $this->db->beginTransaction();
 
                 $query = "UPDATE {$this->tb}
-                    SET nama_artist = :nama_artist, slug_artist = :slug_artist WHERE id_artist = :id";
+                    SET artist_name = :nama_artist, artist_slug = :slug_artist, artist_desc = :artist_desc WHERE artist_id = :id";
                 $this->db->query($query);
                 $this->db->bind('nama_artist', htmlspecialchars($_POST['artist_name']));
                 $this->db->bind('slug_artist', htmlspecialchars($_POST['artist_slug']));
+                $this->db->bind('artist_desc', $_POST['artist_desc']);
                 $this->db->bind('id', $id);
                 $this->db->execute();
                 $this->db->commit();
@@ -106,7 +109,7 @@
 
                 $this->db->beginTransaction();
 
-                $query = "DELETE FROM {$this->tb} WHERE id_artist = :id";
+                $query = "DELETE FROM {$this->tb} WHERE artist_id = :id";
                 $this->db->query($query);
                 $this->db->bind('id', $id);
                 $this->db->execute();
