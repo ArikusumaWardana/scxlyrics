@@ -65,9 +65,10 @@
 
             $adminpost = $_POST['username'] && $_POST['email'] && $_POST['status'];
 
+
             if(!empty($adminpost)) {
 
-                if($this->model('AdminModel')->updateAdmin($id, $_POST) > 0) {
+                if($this->model('AdminModel')->updateAdmin($id) > 0) {
                     Flasher::setFlash('Data admin berhasil diperbaharui!', 'success');
                     return redirect('admin/');
                 } else {
