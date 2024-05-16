@@ -63,7 +63,7 @@
             if(!empty($_POST['email'] && $_POST['password'])) {
 
                 if($user) {
-                    if(password_verify($_POST['password'], $user['password'])) {
+                    if(password_verify($_POST['password'], $user['user_password'])) {
                         $this->userSession($user);
                         redirect('/');
                         return $user;
@@ -72,7 +72,7 @@
                         return back();
                     }
                 } elseif($admin) {
-                    if(password_verify($_POST['password'], $admin['password'])) {
+                    if(password_verify($_POST['password'], $admin['admin_password'])) {
                         $this->adminSession($admin);
                         redirect('/dashboard');
                         return $admin;
