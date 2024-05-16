@@ -40,10 +40,11 @@
 
         public function getGenreDuplikat() {
 
-            $query = "SELECT * FROM {$this->tb} WHERE genre_name = :genre_name AND genre_slug = :genre_slug";
+            $query = "SELECT * FROM {$this->tb} WHERE genre_name = :genre_name AND genre_slug = :genre_slug AND genre_description = :genre_description";
             $this->db->query($query);
-            $this->db->bind('genre_name', $_POST['genre_name']);
-            $this->db->bind('genre_slug', $_POST['genre_slug']);
+            $this->db->bind('genre_name', htmlspecialchars($_POST['genre_name']));
+            $this->db->bind('genre_slug', htmlspecialchars($_POST['genre_slug']));
+            $this->db->bind('genre_description', $_POST['genre_desc']);
             return $this->db->singleResult();
 
         }
@@ -81,11 +82,11 @@
                 $this->db->beginTransaction();
                 
                 $query = "UPDATE {$this->tb} 
-                SET nama_genre = :nama_genre, slug_genre = :slug_genre, description = :description WHERE id_genre = :id";
+                SET genre_name = :nama_genre, genre_slug = :slug_genre, genre_description = :genre_description WHERE genre_id = :id";
                 $this->db->query($query);
-                $this->db->bind('nama_genre', $_POST['genre_name']);
-                $this->db->bind('slug_genre', $_POST['genre_slug']);
-                $this->db->bind('description', $_POST['genre_desc']);
+                $this->db->bind('nama_genre', htmlspecialchars($_POST['genre_name']));
+                $this->db->bind('slug_genre', htmlspecialchars($_POST['genre_slug']));
+                $this->db->bind('genre_description', $_POST['genre_desc']);
                 $this->db->bind('id', $id);
                 $this->db->execute();
                 $this->db->commit();
@@ -107,7 +108,7 @@
 
                 $this->db->beginTransaction();
 
-                $query = "DELETE FROM {$this->tb} WHERE id_genre = :id";
+                $query = "DELETE FROM {$this->tb} WHERE genre_id = :id";
                 $this->db->query($query);
                 $this->db->bind('id', $id);
                 $this->db->execute();

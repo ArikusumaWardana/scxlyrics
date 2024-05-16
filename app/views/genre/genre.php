@@ -21,17 +21,17 @@
 
         <tr class="text-center">
             <th scope="col"><?= $key+1; ?></th>
-            <td><?= $genre['nama_genre']; ?></td>
-            <td><?= mb_strimwidth($genre['description'], 0, 40, '...') ?></td>
+            <td><?= $genre['genre_name']; ?></td>
+            <td><?= mb_strimwidth($genre['genre_description'], 0, 40, '...') ?></td>
             <td>
-                <a href="<?= url('genre/edit/'. $genre['id_genre']) ?>" class="btn btn-warning text-white"><i class='bx bx-edit'></i></a>
-                <a href="" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $genre['id_genre'] ?>"><i class='bx bxs-trash-alt'></i></a>
+                <a href="<?= url('genre/edit/'. $genre['genre_id']) ?>" class="btn btn-warning text-white"><i class='bx bx-edit'></i></a>
+                <a href="" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $genre['genre_id'] ?>"><i class='bx bxs-trash-alt'></i></a>
             
                 <!-- Modal -->
-                <div class="modal fade" id="deleteModal<?= $genre['id_genre'] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal fade" id="deleteModal<?= $genre['genre_id'] ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <form action="<?= url('genre/delete/'.$genre['id_genre']) ?>" method="post">
+                        <form action="<?= url('genre/delete/'.$genre['genre_id']) ?>" method="post">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -42,12 +42,12 @@
                                         <tr class="text-start">
                                             <td>Genre Name</td>
                                             <td>:</td>
-                                            <td><?= $genre['nama_genre']; ?></td>
+                                            <td><?= $genre['genre_name']; ?></td>
                                         </tr>
                                         <tr class="text-start">
                                             <td>Description</td>
                                             <td>:</td>
-                                            <td><?= $genre['description']; ?></td>
+                                            <td><?= $genre['genre_description']; ?></td>
                                         </tr>
                                     </table>
                                 </div>

@@ -88,7 +88,7 @@
                 // mengecek apakah data yang diinputkan admin sudah ada di database atau belum.
                 if(!$duplikat) {
 
-                    if($this->model('GenreModel')->updateGenre($id, $_POST) > 0 ) {
+                    if($this->model('GenreModel')->updateGenre($id) > 0 ) {
 
                         Flasher::setFlash('Data genre berhasil di update!', 'success');
                         return redirect('genre');
