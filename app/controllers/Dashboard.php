@@ -3,7 +3,7 @@
     Class Dashboard extends Controller {
 
         public function __construct() {
-            if(!isset($_SESSION['admin']['admin_id '])) {
+            if(!isset($_SESSION['admin']['admin_id'])) {
                 redirect('/');
             }
         }
