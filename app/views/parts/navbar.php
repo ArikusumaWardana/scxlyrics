@@ -5,8 +5,8 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown user-drop">
                 <a class="nav-link drop-toggle d-flex align-items-center me-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <?php if(!empty($_SESSION['user']['username'] ?? $_SESSION['admin']['username'])) : ?>
-                    <div class="fw-bold me-2 text-white"><?= $_SESSION['user']['username'] ?? $_SESSION['admin']['username'] ?> </div>
+                  <?php if(!empty($_SESSION['user']['username'] ?? $_SESSION['admin']['admin_name'])) : ?>
+                    <div class="fw-bold me-2 text-white"><?= $_SESSION['user']['username'] ?? $_SESSION['admin']['admin_name'] ?> </div>
                     <div class=""><i class='bx bxs-user-circle user-profile-icon fs-2' style='color:#ffffff'></i></div>
                   <?php endif; ?>
                 </a>

@@ -60,7 +60,7 @@
                     <div class="ms-1"><span>Data Artist</span></div>
                 </a>
             </li>
-            <?php if($_SESSION['admin']['level'] == 'superadmin') : ?>
+            <!-- <?php if($_SESSION['admin']['level'] == 'admin') : ?> -->
                 <li class="nav-item my-1">
                     <a href="<?= url('admin/') ?>" class="nav-link d-flex align-items-center <?php if($data['page-title'] == 'Admin Data') : ?> side-active <?php endif; ?>" aria-current="page">
                         <div class="me-1"><i class='bx bxs-user-account'></i> </div>
@@ -73,7 +73,7 @@
                         <div class="ms-1"><span>Data User</span></div>
                     </a>
                 </li>
-            <?php endif; ?>
+            <!-- <?php endif; ?> -->
         </ul>
         <div class="ms-4">
             <form action="<?= url('auth/logout') ?>" method="post" class="py-1 px-3" style="margin-top: 100%;">
@@ -82,7 +82,7 @@
         </div>
       </div>
     </div>
-    <span class="navbar-brand text-white"><?= $_SESSION['admin']['username'] ?></span>
+    <span class="navbar-brand text-white"><?= $_SESSION['admin']['admin_name'] ?></span>
   </div>
 </nav>  
 

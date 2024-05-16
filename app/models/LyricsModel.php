@@ -21,7 +21,7 @@
 
         public function getAllLyrics() {
 
-            $query = "SELECT * FROM allLyrics ORDER BY id_lyrics DESC";
+            $query = "SELECT * FROM {$this->tb} ORDER BY id_lyrics DESC";
             
             $this->db->query($query);
             return $this->db->allResult();
@@ -30,7 +30,7 @@
 
         public function getLyricsById($id) {
 
-            $query = "SELECT * FROM allLyrics WHERE id_lyrics = :id";
+            $query = "SELECT * FROM {$this->tb} WHERE id_lyrics = :id";
 
             $this->db->query($query);
             $this->db->bind('id', $id);
@@ -40,7 +40,7 @@
 
         public function getUploadLyrics() {
 
-            $query = "SELECT * FROM allLyrics ORDER BY id_lyrics DESC LIMIT 10";
+            $query = "SELECT * FROM {$this->tb} ORDER BY id_lyrics DESC LIMIT 10";
             
             $this->db->query($query);
             return $this->db->allResult();
@@ -49,7 +49,7 @@
 
         public function getLyricsBySlug($slug) {
 
-            $query = "SELECT * FROM allLyrics WHERE slug_lyrics = :slug";
+            $query = "SELECT * FROM {$this->db} WHERE lyrics_slug = :slug";
 
             $this->db->query($query);
             $this->db->bind('slug', $slug);
@@ -61,7 +61,7 @@
 
             $search = $_POST['keyword'];
 
-            $query = "SELECT * FROM allLyrics WHERE title_lyrics LIKE :keyword OR nama_genre LIKE :keyword";
+            $query = "SELECT * FROM {$this->db} WHERE lyrics_title LIKE :keyword OR genre_name LIKE :keyword";
 
             $this->db->query($query);
             $this->db->bind('keyword', "%$search%");
@@ -71,11 +71,11 @@
 
         public function getLyricsDuplikat() {
 
-            $query = "SELECT * FROM {$this->tb} WHERE title_lyrics = :title_lyrics AND slug_lyrics = :slug_lyrics";
+            $query = "SELECT * FROM {$this->tb} WHERE lyrics_title = :lyrics_title AND lyrics_slug = :lyrics_slug";
             
             $this->db->query($query);
-            $this->db->bind('title_lyrics', $_POST['lyrics_title']);
-            $this->db->bind('slug_lyrics', $_POST['lyrics_slug']);
+            $this->db->bind('lyrics_title', $_POST['lyrics_title']);
+            $this->db->bind('lyrics_slug', $_POST['lyrics_slug']);
             return $this->db->singleResult();
 
         }
@@ -86,7 +86,7 @@
 
                 $this->db->beginTransaction();
 
-                $query = "INSERT INTO {$this->tb} (id_genre, id_artist, title_lyrics, slug_lyrics, image_cover, date_upload, japan_lyrics, english_lyrics, indo_lyrics, link_embed)
+                $query = "INSERT INTO {$this->tb} (id_genre, id_artist, lyrics_title, lyrics_slug, image_cover, date_upload, japan_lyrics, english_lyrics, indo_lyrics, link_embed)
                     VALUES (:id_genre, :id_artist, :title_lyrics, :slug_lyrics, :image_cover, :date_upload, :japan_lyrics, :english_lyrics, :indo_lyrics, :link_embed)
                 ";
                 $this->db->query($query);
@@ -106,7 +106,7 @@
                 return 1;
 
             } catch (Exception $e) {
-
+ 
                 $this->db->rollback();
                 echo $e->getMessage();
 

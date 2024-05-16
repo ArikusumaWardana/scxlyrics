@@ -11,7 +11,7 @@
 
         public function getAllArtist() {
 
-            $query = "SELECT * FROM {$this->tb} ORDER BY id_artist DESC";
+            $query = "SELECT * FROM {$this->tb} ORDER BY artist_id DESC";
 
             $this->db->query($query);
             return $this->db->allResult();
@@ -20,7 +20,7 @@
 
         public function getArtist() {
 
-            $query = "SELECT * FROM {$this->tb} ORDER BY nama_artist ASC";
+            $query = "SELECT * FROM {$this->tb} ORDER BY artist_name ASC";
 
             $this->db->query($query);
             return $this->db->allResult();
@@ -29,7 +29,7 @@
 
         public function getArtistById($id) {
 
-            $query = "SELECT * FROM {$this->tb} WHERE id_artist = :id";
+            $query = "SELECT * FROM {$this->tb} WHERE artist_id = :id";
 
             $this->db->query($query);
             $this->db->bind('id', $id);
@@ -39,11 +39,11 @@
 
         public function getArtistDuplikat() {
 
-            $query = "SELECT * FROM {$this->tb} WHERE nama_artist = :nama_artist AND slug_artist = :slug_artist";
+            $query = "SELECT * FROM {$this->tb} WHERE artist_name = :artist_name AND artist_slug = :artist_slug";
             
             $this->db->query($query);
-            $this->db->bind('nama_artist', $_POST['artist_name']);
-            $this->db->bind('slug_artist', $_POST['artist_slug']);
+            $this->db->bind('artist_name', $_POST['artist_name']);
+            $this->db->bind('artist_slug', $_POST['artist_slug']);
             return $this->db->singleResult();
 
         }
