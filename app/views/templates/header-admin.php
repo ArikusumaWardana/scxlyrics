@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li class="nav-item my-1">
-                <a href="<?= url('artist/') ?>" class="nav-link d-flex align-items-center" aria-current="page">
+                <a href="<?= url('artist/') ?>" class="nav-link d-flex align-items-center <?php if($data['page-title'] == 'Artist Data') : ?> side-active <?php endif; ?>" aria-current="page">
                     <div class="me-1"><i class='bx bxs-user-detail'></i> </div>
                     <div class="ms-1"><span>Data Artist</span></div>
                 </a>
