@@ -10,7 +10,7 @@
 
     
         
-        <link rel="stylesheet" href="<?= baseUrl ?>assets/css/style.css?v2">
+        <link rel="stylesheet" href="<?= baseUrl ?>assets/css/style.css">
 
         <link rel="stylesheet" href="<?= baseUrl ?>assets/css/bootstrap.min.css">
 
