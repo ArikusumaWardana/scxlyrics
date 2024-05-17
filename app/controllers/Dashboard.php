@@ -15,7 +15,7 @@
                 "user" => $this->model('UserModel')->allUser(),
                 "admin" => $this->model('AdminModel')->getAllAdmin(),
                 "artist" => $this->model('ArtistModel')->getAllArtist(),
-                "lyrics" => $this->model('LyricsModel')->allLyrics(),
+                "lyrics" => $this->model('LyricsModel')->getAllLyrics(),
                 "history" => $this->model('LyricsModel')->getAllLyrics()
             ];
 
