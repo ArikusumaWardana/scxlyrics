@@ -23,7 +23,7 @@
                     <select class="form-select" aria-label="Default select example" name="genre_lyrics">
                         <option selected>Pilih Genre</option>
                         <?php foreach($data['all-genre'] as $genre) : ?>
-                            <option value="<?= $genre['id_genre'] ?>"><?= $genre['nama_genre'] ?></option>
+                            <option value="<?= $genre['genre_id'] ?>"><?= $genre['genre_name'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -32,7 +32,7 @@
                     <select class="form-select" aria-label="Default select example" name="artist_lyrics">
                         <option selected>Pilih Artist</option>
                         <?php foreach($data['all-artist'] as $artist) : ?>
-                            <option value="<?= $artist['id_artist'] ?>"><?= $artist['nama_artist'] ?></option>
+                            <option value="<?= $artist['artist_id'] ?>"><?= $artist['artist_name'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

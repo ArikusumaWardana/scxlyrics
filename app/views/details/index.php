@@ -17,14 +17,14 @@
             <div class="body-left">
                 <div class="d-flex justify-content-between">
                     <div class="artist">
-                        <span><?= $data['lyrics-detail']['nama_artist'] ?></span>
+                        <span><?= $data['lyrics-detail']['artist_name'] ?></span>
                     </div>
                     <div class="genre">
-                        <span><?= $data['lyrics-detail']['nama_genre'] ?></span>
+                        <span><?= $data['lyrics-detail']['genre_name'] ?></span>
                     </div>
                 </div>
                 <div class="title-lyrics mt-3">
-                    <h4>[Lirik+Terjemahan] <?= $data['lyrics-detail']['title_lyrics'] ?></h4>
+                    <h4>[Lirik+Terjemahan] <?= $data['lyrics-detail']['lyrics_title'] ?></h4>
                 </div>
                 <div class="date-lyrics">
                     <span>At <?= date('d F Y', strtotime($data['lyrics-detail']['date_upload'])) ?></span>
@@ -55,7 +55,7 @@
                 
                 <?php if($data['lyrics-detail']['indo_lyrics']) : ?> 
                     <div class="romaji">
-                        <p class="fw-bold mt-5 mb-3 text-uppercase">INDONESIA :</p>
+                        <p class="fw-bold mt-5 mb-3 text-uppercase">INDONESIAN VERSION :</p>
                         <?= $data['lyrics-detail']['indo_lyrics'] ?>
                     </div>
                 <?php endif; ?>
@@ -68,24 +68,24 @@
         <div class="col-3 right-detail shadow-lg">
             <div class="body-right">
                 <div class="popular">
-                    <p class="">Popular Song</p>
-                    <?php foreach($data['upload'] as $upload) : ?>
+                    <p class="">Random Song Lyrics</p>
+                    <?php foreach($data['get-random-lyrics'] as $random) : ?>
                         <div class="popular-list my-4">
-                            <a href="<?= url('details/'. $upload['slug_lyrics']) ?>" class="d-flex">
-                                <img class="popular-img" src="<?= baseUrl ?>assets/upload/<?= $upload['image_cover'] ?>" alt="">
-                                <span class="popular-title text-start ms-2">[Lirik+Terjemahan] <?= $upload['title_lyrics'] ?></span>
+                            <a href="<?= url('details/'. $random['lyrics_slug']) ?>" class="d-flex">
+                                <img class="popular-img" src="<?= baseUrl ?>assets/upload/<?= $random['image_cover'] ?>" alt="">
+                                <span class="popular-title text-start ms-2">[Lirik+Terjemahan] <?= $random['lyrics_title'] ?></span>
                             </a>
                         </div>
                     <?php endforeach; ?>
                 </div>
 
                 <div class="update">
-                    <p class="">Update Song</p>
+                    <p class="">Update Song Lyrics</p>
                     <?php foreach($data['upload'] as $upload) : ?>
                         <div class="update-list my-4">
-                            <a href="<?= url('details/'. $upload['slug_lyrics']) ?>" class="d-flex">
+                            <a href="<?= url('details/'. $upload['lyrics_slug']) ?>" class="d-flex">
                                 <img class="update-img" src="<?= baseUrl ?>assets/upload/<?= $upload['image_cover'] ?>" alt="">
-                                <span class="update-title text-start ms-2">[Lirik+Terjemahan] <?= $upload['title_lyrics'] ?></span>
+                                <span class="update-title text-start ms-2">[Lirik+Terjemahan] <?= $upload['lyrics_title'] ?></span>
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -97,7 +97,7 @@
                         <?php ?>
                             <div class="my-2 d-flex flex-column justify-content-center gap-2">
                                 <?php foreach($data['get-all-genre'] as $genre ) : ?>
-                                    <a href="" class="genre-title"><?= $genre["nama_genre"] ?></a>
+                                    <a href="" class="genre-title"><?= $genre["genre_name"] ?></a>
                                 <?php endforeach; ?>
                             </div>
                         <?php ?>
