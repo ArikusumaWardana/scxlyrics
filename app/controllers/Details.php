@@ -8,6 +8,7 @@
             $data['upload'] = $this->model('LyricsModel')->getUploadLyrics();
             $data['lyrics-detail'] = $this->model('LyricsModel')->getLyricsBySlug($slug);
             $data['get-all-genre'] = $this->model('GenreModel')->getAllGenre();
+            $data['get-random-lyrics'] = $this->model('LyricsModel')->getRandomLyrics();
 
             $this->view('templates/header-user', $data);
                 $this->view('parts/navbar');
