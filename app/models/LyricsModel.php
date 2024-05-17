@@ -2,7 +2,8 @@
 
     Class LyricsModel {
 
-        private $tb = 'lyrics',
+        private $tb_lyrics = 'lyrics',
+                $allLyrics = "SELECT lyrics.id_lyrics, lyrics.id_genre, lyrics.id_artist, lyrics.lyrics_title, lyrics.lyrics_slug, genre.genre_name, artist.artist_name, lyrics.image_cover, lyrics.date_upload, lyrics.japan_lyrics, lyrics.english_lyrics, lyrics.indo_lyrics, lyrics.link_embed FROM lyrics INNER JOIN genre ON lyrics.id_genre = genre.genre_id INNER JOIN artist ON lyrics.id_artist = artist.artist_id",
                 $db;
 
         public function __construct() {
@@ -11,17 +12,9 @@
 
         }
 
-        public function allLyrics() {
-
-            $query = "SELECT * FROM {$this->tb} ORDER BY id_lyrics DESC";
-            $this->db->query($query);
-            return $this->db->allResult();
-
-        }
-
         public function getAllLyrics() {
 
-            $query = "SELECT * FROM {$this->tb} ORDER BY id_lyrics DESC";
+            $query = "{$this->allLyrics} ORDER BY {$this->tb_lyrics}.id_lyrics DESC";
             
             $this->db->query($query);
             return $this->db->allResult();
@@ -30,7 +23,7 @@
 
         public function getLyricsById($id) {
 
-            $query = "SELECT * FROM {$this->tb} WHERE id_lyrics = :id";
+            $query = "{$this->allLyrics} WHERE id_lyrics = :id";
 
             $this->db->query($query);
             $this->db->bind('id', $id);
@@ -40,8 +33,17 @@
 
         public function getUploadLyrics() {
 
-            $query = "SELECT * FROM {$this->tb} ORDER BY id_lyrics DESC LIMIT 10";
+            $query = "{$this->allLyrics} ORDER BY id_lyrics DESC LIMIT 10";
             
+            $this->db->query($query);
+            return $this->db->allResult();
+
+        }
+
+        public function getRandomLyrics() {
+            
+            $query = "{$this->allLyrics} ORDER BY RAND() LIMIT 10";
+
             $this->db->query($query);
             return $this->db->allResult();
 
@@ -49,7 +51,7 @@
 
         public function getLyricsBySlug($slug) {
 
-            $query = "SELECT * FROM {$this->db} WHERE lyrics_slug = :slug";
+            $query = "{$this->allLyrics} WHERE lyrics_slug = :slug";
 
             $this->db->query($query);
             $this->db->bind('slug', $slug);
@@ -61,7 +63,7 @@
 
             $search = $_POST['keyword'];
 
-            $query = "SELECT * FROM {$this->db} WHERE lyrics_title LIKE :keyword OR genre_name LIKE :keyword";
+            $query = "{$this->allLyrics} WHERE lyrics_title LIKE :keyword OR genre_name LIKE :keyword";
 
             $this->db->query($query);
             $this->db->bind('keyword', "%$search%");
@@ -71,7 +73,7 @@
 
         public function getLyricsDuplikat() {
 
-            $query = "SELECT * FROM {$this->tb} WHERE lyrics_title = :lyrics_title AND lyrics_slug = :lyrics_slug";
+            $query = "{$this->allLyrics} WHERE lyrics_title = :lyrics_title AND lyrics_slug = :lyrics_slug";
             
             $this->db->query($query);
             $this->db->bind('lyrics_title', $_POST['lyrics_title']);
@@ -86,7 +88,7 @@
 
                 $this->db->beginTransaction();
 
-                $query = "INSERT INTO {$this->tb} (id_genre, id_artist, lyrics_title, lyrics_slug, image_cover, date_upload, japan_lyrics, english_lyrics, indo_lyrics, link_embed)
+                $query = "INSERT INTO {$this->tb_lyrics} (id_genre, id_artist, lyrics_title, lyrics_slug, image_cover, date_upload, japan_lyrics, english_lyrics, indo_lyrics, link_embed)
                     VALUES (:id_genre, :id_artist, :title_lyrics, :slug_lyrics, :image_cover, :date_upload, :japan_lyrics, :english_lyrics, :indo_lyrics, :link_embed)
                 ";
                 $this->db->query($query);
