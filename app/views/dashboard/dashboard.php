@@ -81,7 +81,7 @@
     <thead>
         <tr class="text-center">
         <th class="py-3 text-center" scope="col">No</th>
-        <th class="py-3 text-center" scope="col">Judul Lyrics</th>
+        <th class="py-3 text-center" scope="col">Lyrics Title</th>
         <th class="py-3 text-center" scope="col">Artist</th>
         <th class="py-3 text-center" scope="col">Upload Date</th>
         </tr>
@@ -90,8 +90,8 @@
         <?php foreach($data['history'] as $key => $history) : ?>
             <tr class="text-center">
                 <th scope="col"><?= $key+1 ?></th>
-                <td><?= $history['title_lyrics'] ?></td>
-                <td><?= $history['nama_genre'] ?></td>
+                <td><?= $history['lyrics_title'] ?></td>
+                <td><?= $history['genre_name'] ?></td>
                 <td><?= date('d F Y', strtotime($history['date_upload'])) ?></td>
             </tr>
         <?php endforeach; ?>
